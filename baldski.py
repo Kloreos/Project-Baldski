@@ -27,9 +27,9 @@ sky = Sky()
 #movement
 player = FirstPersonController(model = 'player',speed=30)
 
-# def update(): #Fix freefall
-#     if player.y < -1:
-#         player.position = Vec3(0,0,0)
+def update(): #Fix freefall
+    if player.y < -1:
+        player.position = Vec3(0,0,0)
 player.position=Vec3(0,3,0)
 
 #Rotation
