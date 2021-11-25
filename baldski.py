@@ -41,6 +41,12 @@ wall4 = Entity(model = "cube"
 , collider = "mesh"
 , rotation_y = 90
 , texture = BTexture)
+wall5 = Entity(model = "cube"
+, position = Vec3(2.38985, 30, -0.799802)
+, scale = (80,70,1)
+, collider = "mesh"
+, rotation_x =90     
+, texture = BTexture)
 # other entities
 amogus = Entity(model = "amogus.blend"
 ,texture =BTexture, scale = 10,collider = 'mesh', shader = lit_with_shadows_shader)
@@ -54,23 +60,41 @@ baldski = Entity(model = "baldski.blend"
 baldski.position = (2,5,0)
 
 #Weapon
-gun = Entity(parent = camera,model = "source/Gun low poly.fbx", scale = 0.25
-,position = Vec3(2,-0.25,2.5), rotation = Vec3(0,90,0), texture = "textures/Gun_low_poly_gun_AlbedoTransparency.png")
+basic_gun = "source/Pistol.fbx"
+baldski_face = "baldski.blend"
+weapon = Entity(parent = camera,model = basic_gun, scale = 0.05
+,position = Vec3(-0.5,-2,-1), rotation = Vec3(0,0,0), texture = "textures/PistolTexture.png")
 
+#Weapon animations
 
-# gun = Entity(model="source/Gun low poly.fbx"
-# ,  texture = "Barski_text.png", scale = 0.5, shader = lit_with_shadows_shader)
-# position = Vec3(2,5,0)
 
 #Environment
 sky = Sky()
 #movement
 player = FirstPersonController(model = 'player',speed=30)
+player.scale = 2
 baldski_pos = player.position + (3,3,0) 
-def update(): #Fix freefall
-    print(player.position)
+
+run_speed = 50
+run = False
+
+def update(): #upate function
+    # print(player.position)
     # if player.y < -1: 
     # player.position = Vec3(0,3,0)
+    if held_keys["2"]:
+        weapon.model = baldski_face
+        weapon.texture = BTexture
+        weapon.position = Vec3(2,-0.25,2.5)
+        weapon.rotation = rotation = Vec3(0,90,0)
+        weapon.scale = 0.25
+    elif held_keys["1"]:
+        weapon.model = basic_gun
+        weapon.texture = "textures/PistolTexture.png"
+        weapon.position = Vec3(-0.5,-2,-1)
+        weapon.rotation =Vec3(0,0,0)
+        weapon.scale = 0.05
+
 
 #run window
 app.run()
