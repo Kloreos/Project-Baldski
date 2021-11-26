@@ -1,3 +1,4 @@
+#Credit: PeterDinh and Siverbeast2000, with helps from KietLam and Kien
 #Import  library
 from ursina import *
 from ursina import collider
