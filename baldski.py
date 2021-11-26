@@ -63,7 +63,10 @@ baldski.position = (2,5,0)
 basic_gun = "source/Pistol.fbx"
 baldski_face = "baldski.blend"
 weapon = Entity(parent = camera,model = basic_gun, scale = 0.05
-,position = Vec3(-0.5,-2,-1), rotation = Vec3(0,0,0), texture = "textures/PistolTexture.png")
+,position = Vec3(2,-2,-0.5), rotation = Vec3(2,0,8), texture = "textures/PistolTexture.png")
+
+weapon2 = Entity(model = basic_gun, scale = 0.05
+,position = Vec3(2,5,0), rotation = Vec3(2,0,8), texture = "textures/PistolTexture.png")
 
 #Weapon animations
 
@@ -94,6 +97,22 @@ def update(): #upate function
         weapon.position = Vec3(-0.5,-2,-1)
         weapon.rotation =Vec3(0,0,0)
         weapon.scale = 0.05
+
+    elif held_keys["q"]:
+        weapon.model = basic_gun
+        weapon.texture = "textures/PistolTexture.png"
+        weapon.position = Vec3(-0.5,-2,-1)
+        weapon.rotation =Vec3(0,0,0)
+        weapon.scale =  0.05
+
+    elif held_keys["e"]:
+        weapon.model = basic_gun
+        weapon.texture = "textures/PistolTexture.png"
+        weapon.position =Vec3(2,-2,-0.5)
+        weapon.rotation =Vec3(2,0,8)
+        weapon.scale =  0.05
+
+
 
 
 #run window
