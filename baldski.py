@@ -54,15 +54,15 @@ player = FirstPersonController(model = 'player',speed=30)
 player.scale = 2
 baldski_pos = player.position + (3,3,0) 
 
+#GUI
+Text(text = "Quest: Find baldski hair",origin =Vec2(x = 2.25, y = -18))
+
 # other entities
 amogus = Entity(model = "amogus.blend"
 ,texture =BTexture, scale = 4,collider = 'mesh', shader = lit_with_shadows_shader)
 
 amogus.position = Vec3(2,5,0)
-amogus.add_script(SmoothFollow(target = player, offset =[0,5,0], speed = 4))
-
-def attack():
-    pass
+amogus.add_script(SmoothFollow(target = player, offset =[-2,4,0], speed = 2.5))
 
 #Base
 base = Entity(model = "base.blend"
@@ -87,7 +87,7 @@ sky = Sky()
 
 
 def update(): #upate function
-    # print(player.position)
+    print(player.position)
     # if player.y < -1: 
     # player.position = Vec3(0,3,0)
     if held_keys["2"]:
