@@ -1,4 +1,3 @@
-#Credit: PeterDinh and Siverbeast2000, with helps from KietLam and Kien
 #Import  library
 from ursina import *
 from ursina import collider
@@ -56,7 +55,20 @@ player.scale = 2
 baldski_pos = player.position + (3,3,0) 
 
 #GUI
-Text(text = "Quest: Find baldski hair",origin =Vec2(x = 2.25, y = -18))
+
+show_text = True
+text1 = ""
+Quest_text = Text(text = text1,origin =Vec2(x = 2.25, y = -18))
+
+def quest():
+    global text1
+    global Quest_text
+    if held_keys["tab"]:
+        Quest_text.text = "**Quest: Find baldski hair"
+    elif not held_keys["3"]:
+        Quest_text.text = ""
+
+quest()
 
 # other entities
 amogus = Entity(model = "amogus.blend"
@@ -88,9 +100,10 @@ sky = Sky()
 
 
 def update(): #upate function
-    print(player.position)
+    # print(player.position)
     # if player.y < -1: 
     # player.position = Vec3(0,3,0)
+    quest()
     if held_keys["2"]:
         weapon.model = baldski_face
         weapon.texture = BTexture
