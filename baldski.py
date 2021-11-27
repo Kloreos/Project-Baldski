@@ -11,8 +11,8 @@ import time
 app = Ursina()
 window.fullscreen = True
 #Baldski texture
-BTexture = "Barski_text"
-WallB = "WallTexture.jpg"
+BTexture = "Baldski_dlc/Barski_text"
+WallB = "Baldski_dlc/WallTexture.jpg"
 #Entity
 map = Entity(model = 'maze.blend'
 ,texture = BTexture
@@ -56,11 +56,12 @@ fix3 = duplicate(wall,Vec3(-1, 0, -21.79999) )
 fix4 = duplicate(wall,Vec3(-22.89999, 0, 3.2999))
 fix5 = duplicate(wall,Vec3(2.28985, 30, -0.699802) )
 #player
-player = FirstPersonController(model = 'player',speed=30)
-player.scale = 2
-baldski_pos = player.position + (3,3,0) 
+player = FirstPersonController(model = 'player',speed=30,y = 10)
+player.jump_height = 6
+player.gravity = 1
+player.position = Vec3(2.24184, 0, 15.8104)
 
-#GUI
+#GUI    
 
 show_text = True
 text1 = ""
@@ -77,6 +78,13 @@ def quest():
 #Start Menu
 def start_menu():
     menu = Entity(model = "quad", texture = "baldski_face",position = Vec2(x = 2.25, y = -18))
+#Sound Effects
+amogus_audio = Audio("amogus.mp3",loop = False, autoplay = False)
+
+def walksound():
+    if held_keys["a"] or held_keys["d"] or held_keys["w"] or held_keys["s"]:
+        amogus_audio.play()
+
 
 # other entities
 amogus = Entity(model = "amogus.blend"
@@ -103,32 +111,48 @@ weapon2 = Entity(model = basic_gun, scale = 0.05
 
 bang = Audio("bang.mp3",loop = False, autoplay = False )
 
+def shoot():
+    bang.play()
 
 
 #Weapon animations
 
+#Load DlC
+DLC_load = True
+def DLC():
+    if DLC_load == True:
+        BTexture = "Dam_dlc/dam1.jpg"
+        WallB = "Dam_dlc/dam2.jpg"
+    else: 
+        Btexture ="Baldski_dlc/Barski_text"
+        WallB = "Baldski_dlc/WallTexture.jpg"
+
 #Environment
 sky = Sky()
-
+#Fix player
 
 def update(): #upate function
-    # print(player.position)
+    print(player.position)
     # if player.y < -1: 
-    # player.position = Vec3(0,3,0)
+    #     player.position = Vec3(0,3,0)
     start_menu()
     quest()
+    DLC()
     if held_keys["2"]:
         weapon.model = baldski_face
         weapon.texture = BTexture
         weapon.position = Vec3(2,-0.25,2.5)
-        weapon.rotation = rotation = Vec3(0,90,0)
+        weapon.rotation= Vec3(0,90,0)
         weapon.scale = 0.25
+        amogus_audio.play()
+
     elif held_keys["1"]:
         weapon.model = basic_gun
         weapon.texture = "textures/PistolTexture.png"
         weapon.position = Vec3(-0.5,-2,-1)
         weapon.rotation =Vec3(0,0,0)
         weapon.scale = 0.05
+
 
     elif held_keys["q"]:
         weapon.model = basic_gun
@@ -144,5 +168,7 @@ def update(): #upate function
         weapon.rotation =Vec3(2,0,8)
         weapon.scale =  0.05
 
-#run window
+    elif held_keys["f"]: 
+        shoot()
+ #run window
 app.run()
