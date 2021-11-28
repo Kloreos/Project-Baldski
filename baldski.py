@@ -16,7 +16,7 @@ window.fullscreen = False
 
 #Baldski texture
 BTexture = "Baldski_dlc/Barski_text"
-WallB = "Baldski_dlc/WallTexture.jpg"
+WallB = "Baldski_dlc/WallTexture.png"
 #Entity
 map = Entity(model = 'maze.blend'
 ,texture = BTexture
