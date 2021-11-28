@@ -9,10 +9,10 @@ from ursina import curve
 import time
 #load window
 app = Ursina()
-window.fullscreen = True
+window.fullscreen = False
 #Baldski texture
 BTexture = "Baldski_dlc/Barski_text"
-WallB = "Baldski_dlc/WallTexture.jpg"
+WallB = "Baldski_dlc/WallTexture.png"
 #Entity
 map = Entity(model = 'maze.blend'
 ,texture = BTexture
@@ -77,7 +77,13 @@ def quest():
 
 #Start Menu
 def start_menu():
-    menu = Entity(model = "quad", texture = "baldski_face",position = Vec2(x = 2.25, y = -18))
+    menu = Entity(model = "quad",
+     texture = "Game_menu",
+     position = Vec2(.3,-.1),parent=camera.ui,
+     scale=(2.4,1.2))
+    A=Button(text="Play",text_color=color.white,scale=.10,origin=(0,2))
+Cursor()
+mouse.visible = True
 #Sound Effects
 amogus_audio = Audio("amogus.mp3",loop = False, autoplay = False)
 
@@ -111,14 +117,10 @@ weapon2 = Entity(model = basic_gun, scale = 0.05
 
 bang = Audio("bang.mp3",loop = False, autoplay = False )
 
-def shoot():
-    bang.play()
-
-
 #Weapon animations
 
 #Load DlC
-DLC_load = True
+DLC_load = False
 def DLC():
     if DLC_load == True:
         BTexture = "Dam_dlc/dam1.jpg"
@@ -130,12 +132,11 @@ def DLC():
 #Environment
 sky = Sky()
 #Fix player
-
+start_menu()
 def update(): #upate function
     print(player.position)
     # if player.y < -1: 
     #     player.position = Vec3(0,3,0)
-    start_menu()
     quest()
     DLC()
     if held_keys["2"]:
@@ -167,8 +168,8 @@ def update(): #upate function
         weapon.position =Vec3(2,-2,-0.5)
         weapon.rotation =Vec3(2,0,8)
         weapon.scale =  0.05
-
-    elif held_keys["f"]: 
-        shoot()
+def action():
+    bang.play()
+Entity(model='square', parent=camera.ui, scale=.1, collider='box', on_click=action)
  #run window
 app.run()
