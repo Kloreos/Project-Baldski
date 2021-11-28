@@ -1,6 +1,7 @@
 #Import  library
 from ursina import *
 from ursina import collider
+from ursina import vec3
 from ursina.prefabs.first_person_controller import *
 from ursina.prefabs.first_person_controller import camera
 from ursina.shaders import lit_with_shadows_shader
@@ -10,9 +11,13 @@ import time
 #load window
 app = Ursina()
 window.fullscreen = False
+
+#Environment
+
+
 #Baldski texture
 BTexture = "Baldski_dlc/Barski_text"
-WallB = "Baldski_dlc/WallTexture.png"
+WallB = "Baldski_dlc/WallTexture.jpg"
 #Entity
 map = Entity(model = 'maze.blend'
 ,texture = BTexture
@@ -54,7 +59,6 @@ fix1 = duplicate(wall,Vec3(1.38086, 0.752942, 23.2663) )
 fix2 = duplicate(wall,Vec3(22.7399, 0.752942, 3.2999) )
 fix3 = duplicate(wall,Vec3(-1, 0, -21.79999) )
 fix4 = duplicate(wall,Vec3(-22.89999, 0, 3.2999))
-fix5 = duplicate(wall,Vec3(2.28985, 30, -0.699802) )
 #player
 player = FirstPersonController(model = 'player',speed=30,y = 10)
 player.jump_height = 6
@@ -71,19 +75,26 @@ def quest():
     global text1
     global Quest_text
     if held_keys["tab"]:
-        Quest_text.text = "**Quest: Find baldski hair"
+        Quest_text.text = "Quest: Find baldski hair"
     elif not held_keys["tab"]:
         Quest_text.text = ""
 
 #Start Menu
+
 def start_menu():
+    player.disable()
+    global menu
+    global Play_button
     menu = Entity(model = "quad",
-     texture = "Game_menu",
+     texture = "Game_menu.png",
      position = Vec2(.3,-.1),parent=camera.ui,
      scale=(2.4,1.2))
-    A=Button(text="Play",text_color=color.white,scale=.10,origin=(0,2))
-Cursor()
-mouse.visible = True
+    Play_button=Button(text="Play",text_color=color.white,scale=(.80,.20),origin=(0,1),on_click=returnPLayer)
+def returnPLayer(): 
+    player.enable()
+    menu.disable()
+    Play_button.disable()
+start_menu()
 #Sound Effects
 amogus_audio = Audio("amogus.mp3",loop = False, autoplay = False)
 
@@ -117,6 +128,11 @@ weapon2 = Entity(model = basic_gun, scale = 0.05
 
 bang = Audio("bang.mp3",loop = False, autoplay = False )
 
+def action():
+    bang.play()
+Entity(model='square', parent=camera.ui, scale=.1, collider='box', on_click=action)
+
+
 #Weapon animations
 
 #Load DlC
@@ -130,9 +146,9 @@ def DLC():
         WallB = "Baldski_dlc/WallTexture.jpg"
 
 #Environment
-sky = Sky()
+sky = Sky(texture = BTexture)
 #Fix player
-start_menu()
+# start_menu()
 def update(): #upate function
     print(player.position)
     # if player.y < -1: 
@@ -168,8 +184,12 @@ def update(): #upate function
         weapon.position =Vec3(2,-2,-0.5)
         weapon.rotation =Vec3(2,0,8)
         weapon.scale =  0.05
-def action():
-    bang.play()
-Entity(model='square', parent=camera.ui, scale=.1, collider='box', on_click=action)
+
+    elif held_keys["p"]:
+        player.position = Vec3(0,40,0)
+
+    elif held_keys["o"]:
+        player.position = Vec3(0,0,0)
+
  #run window
 app.run()
