@@ -14,7 +14,6 @@ window.fullscreen = False
 
 #Environment
 
-
 #Baldski texture
 BTexture = "Baldski_dlc/Barski_text"
 WallB = "Baldski_dlc/WallTexture.jpg"
@@ -80,13 +79,17 @@ def quest():
         Quest_text.text = ""
 
 #Start Menu
+menu_image = "Game_menu.png"
 
 def start_menu():
     player.disable()
     global menu
     global Play_button
+    b1 = "Sounds/b1.mp3"
+    baldski_audio = Audio(b1, autoplay=False,loop=True)
+    baldski_audio.play()
     menu = Entity(model = "quad",
-     texture = "Game_menu.png",
+     texture = menu_image,
      position = Vec2(.3,-.1),parent=camera.ui,
      scale=(2.4,1.2))
     Play_button=Button(text="Play",text_color=color.white,scale=(.80,.20),origin=(0,1),on_click=returnPLayer)
