@@ -16,7 +16,7 @@ window.fullscreen = False
 
 #Baldski texture
 BTexture = "Baldski_dlc/Barski_text"
-WallB = "Baldski_dlc/WallTexture.png"
+WallB = "Baldski_dlc/Barski_text"
 #Entity
 map = Entity(model = 'maze.blend'
 ,texture = BTexture
@@ -47,12 +47,12 @@ wall4 = Entity(model = "cube"
 , collider = "mesh"
 , rotation_y = 90
 , texture = WallB)
-wall5 = Entity(model = "cube"
-, position = Vec3(2.38985, 30, -0.799802)
-, scale = (80,70,1)
-, collider = "mesh"
-, rotation_x =90     
-, texture =WallB)
+# wall5 = Entity(model = "cube"
+# , position = Vec3(2.38985, 30, -0.799802)
+# , scale = (80,70,1)
+# , collider = "mesh"
+# , rotation_x =90     
+# , texture =WallB)
 #Wall fix
 fix1 = duplicate(wall,Vec3(1.38086, 0.752942, 23.2663) )
 fix2 = duplicate(wall,Vec3(22.7399, 0.752942, 3.2999) )
@@ -79,15 +79,16 @@ def quest():
         Quest_text.text = ""
 
 #Start Menu
+b1 = "Sounds/start_menu.mp3"
 menu_image = "Game_menu.png"
-
+baldski_audio = Audio(b1, autoplay=False,loop=True)
+def play_bald():
+    baldski_audio.play()
 def start_menu():
     player.disable()
     global menu
     global Play_button
-    b1 = "Sounds/b1.mp3"
-    baldski_audio = Audio(b1, autoplay=False,loop=True)
-    baldski_audio.play()
+    play_bald()
     menu = Entity(model = "quad",
      texture = menu_image,
      position = Vec2(.3,-.1),parent=camera.ui,
@@ -97,7 +98,10 @@ def returnPLayer():
     player.enable()
     menu.disable()
     Play_button.disable()
-start_menu()
+    baldski_audio.stop()
+
+start = start_menu()
+# start_menu()
 #Sound Effects
 amogus_audio = Audio("amogus.mp3",loop = False, autoplay = False)
 
@@ -189,10 +193,10 @@ def update(): #upate function
         weapon.scale =  0.05
 
     elif held_keys["p"]:
-        player.position = Vec3(0,40,0)
+        player.position = player.position + Vec3(0,40,0)
 
     elif held_keys["o"]:
         player.position = Vec3(0,0,0)
-
+    
  #run window
 app.run()
