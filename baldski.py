@@ -6,7 +6,6 @@ from ursina.prefabs.first_person_controller import *
 from ursina.prefabs.first_person_controller import camera
 from ursina.shaders import lit_with_shadows_shader
 from ursina import curve
-
 import time
 #load window
 app = Ursina()
@@ -47,7 +46,7 @@ wall4 = Entity(model = "cube"
 , collider = "mesh"
 , rotation_y = 90
 , texture = WallB)
-# wall5 = Entity(model = "cube"
+# wall5 = Entity(model = "cube" 
 # , position = Vec3(2.38985, 30, -0.799802)
 # , scale = (80,70,1)
 # , collider = "mesh"
@@ -78,6 +77,7 @@ def quest():
     elif not held_keys["tab"]:
         Quest_text.text = ""
 
+
 #Start Menu
 b1 = "Sounds/start_menu.mp3"
 menu_image = "Game_menu.png"
@@ -93,8 +93,8 @@ def start_menu():
      texture = menu_image,
      position = Vec2(.3,-.1),parent=camera.ui,
      scale=(2.4,1.2))
-    Play_button=Button(text="Play",text_color=color.white,scale=(.80,.20),origin=(0,1),on_click=returnPLayer)
-def returnPLayer(): 
+    Play_button=Button(text="Play",text_color=color.white,scale=(.80,.20),origin=(0,1),on_click=returnPlayer)
+def returnPlayer(): 
     player.enable()
     menu.disable()
     Play_button.disable()
@@ -109,20 +109,21 @@ def walksound():
     if held_keys["a"] or held_keys["d"] or held_keys["w"] or held_keys["s"]:
         amogus_audio.play()
 
+# music_button = Button(text="" , icon = "Escape_Baldski_data/icon/Music_icon.jpeg", scale=.1)
 
 # other entities
 amogus = Entity(model = "amogus.blend"
 ,texture =BTexture, scale = 4,collider = 'mesh', shader = lit_with_shadows_shader)
 
 amogus.position = Vec3(2,5,0)
-amogus.add_script(SmoothFollow(target = player, offset =[-2,4,0], speed = 2.5))
+amogus.add_script(SmoothFollow(target = player, offset =[0,0,0], speed = 2.5))
 
 #Base
 base = Entity(model = "base.blend"
 , texture = "water.png", scale = 20,collider = 'mesh', shader = lit_with_shadows_shader)
-baldski = Entity(model = "baldski.blend"
-, texture = BTexture, scale = 1, shader = lit_with_shadows_shader)
-baldski.position = (2,5,0)
+# baldski = Entity(model = "baldski.blend"
+# , texture = BTexture, scale = 1, shader = lit_with_shadows_shader)
+# baldski.position = (2,5,0)
 
 #Weapon
 basic_gun = "source/Pistol.fbx"
@@ -130,36 +131,71 @@ baldski_face = "baldski.blend"
 weapon = Entity(parent = camera,model = basic_gun, scale = 0.05
 ,position = Vec3(2,-2,-0.5), rotation = Vec3(2,0,8), texture = "textures/PistolTexture.png")
 
-weapon2 = Entity(model = basic_gun, scale = 0.05
-,position = Vec3(2,5,0), rotation = Vec3(2,0,8), texture = "textures/PistolTexture.png")
-
 bang = Audio("bang.mp3",loop = False, autoplay = False )
 
 def action():
     bang.play()
-Entity(model='square', parent=camera.ui, scale=.1, collider='box', on_click=action)
+fps = Entity(model='square', parent=camera.ui, scale=.1, collider='box', on_click=action)
+
+#Settings
+window.fullscreen = True
+window.vsync = False
+def fc():
+    if window.fullscreen == True:
+        window.fullscreen = False
+    elif window.fullscreen == False: 
+        window.fullscreen = True
+
+
+def Settings():
+    player.disable()
+    fps.disable()
+    global S1,S2,S3,setting_img
+    setting_img = Entity(model = "quad",
+     texture = "Settings",
+     position = Vec2(.3,-.1),parent=camera.ui,
+     scale=(2.4,1.2))
+    S1 =Button(text="Fullscreen",text_color=color.white,scale=(.80,.20),origin=(0,1),on_click=fc)
+    S3 =Button(text="close setting",text_color=color.white,scale=(.15,.20),origin=(4,-1), on_click = ReturnSettings)
+
+def ReturnSettings():
+    if S1.enable() and S3.enable() or setting_img.enable():
+        player.enable()
+        fps.enable()
+        setting_img.disable()
+        S1.disable()
+        S3.disable()
+    
+
+def click_settings():
+    if held_keys["escape"]:
+        Settings()
 
 
 #Weapon animations
 
 #Load DlC
-DLC_load = False
+DLC_load = True
 def DLC():
+    global BTexture
+    global WallB
     if DLC_load == True:
         BTexture = "Dam_dlc/dam1.jpg"
         WallB = "Dam_dlc/dam2.jpg"
     else: 
+        global Btexture
         Btexture ="Baldski_dlc/Barski_text"
         WallB = "Baldski_dlc/WallTexture.jpg"
-
 #Environment
 sky = Sky(texture = BTexture)
 #Fix player
 # start_menu()
 def update(): #upate function
-    print(player.position)
+    # print(player.position)
     # if player.y < -1: 
     #     player.position = Vec3(0,3,0)
+    click_settings()
+
     quest()
     DLC()
     if held_keys["2"]:
@@ -176,7 +212,6 @@ def update(): #upate function
         weapon.position = Vec3(-0.5,-2,-1)
         weapon.rotation =Vec3(0,0,0)
         weapon.scale = 0.05
-
 
     elif held_keys["q"]:
         weapon.model = basic_gun
@@ -197,6 +232,8 @@ def update(): #upate function
 
     elif held_keys["o"]:
         player.position = Vec3(0,0,0)
+
     
+
  #run window
 app.run()
