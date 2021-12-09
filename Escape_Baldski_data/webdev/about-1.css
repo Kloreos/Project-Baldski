@@ -1,0 +1,86 @@
+.box-1{
+    background-color:grey;
+    color:black;
+    border-bottom-width: 10px;
+    border-top: 5px white;
+    padding:20px;
+    margin-top: 20px;
+    margin:	100px;
+    word-spacing:0.5em;
+}
+h2{
+    color: darkgreen;
+
+}
+h1{
+    color: #7c0200;
+    font-style: cursive;
+    font-size: 60px;
+}
+h3{
+    color: skyblue;
+}
+body{
+  background-image: url('https://cdna.artstation.com/p/assets/images/images/019/044/110/large/ace-lyons-room14-1.jpg?1561753176');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100% ;
+  margin-top: 40px;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-position: left;
+}
+.max-width{
+    max-width: 1300px;
+    padding: 0 80px;
+    margin: auto;
+}
+/* navbar styling */
+.navbar{
+    position: fixed;
+    width: 100%;
+    background: crimson;
+    font-family:  'Ubuntu', sans-serif;
+}
+.navbar .sticky{
+        padding: 30px 0;
+        background: crimson;
+}
+.navbar .max-width{
+    display: flex;
+    align-items: center;
+    justify-content: space between;
+}
+.navbar .logo a{
+    color: #fff;
+    font-size: 35px;
+    font-weight: 600;
+}
+.navbar .logo a span{
+    color: crimson;
+    transition: all 0.3s ease;
+}
+.navbar .sticky .logo a span{
+    color: #fff;
+}
+.navbar .menu li{
+    list-style: none;
+    display: inline-block;
+    margin: 20;
+    }
+.navbar .menu li a{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+}
+.navbar .menu li a:hover{
+    color: crimson;
+}
+.navbar .sticky .logo a span{
+    color: #fff;
+}
+a{
+    list-style-type: none;
+}

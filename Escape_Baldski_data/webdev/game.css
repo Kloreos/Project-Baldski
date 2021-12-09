@@ -1,0 +1,107 @@
+h1{
+	font: cursive;
+	margin: 50px;
+	font-size: 100px;
+	color: whitesmoke;
+}
+h2{
+	font-size: 20px;
+	margin: 40px;
+	color: whitesmoke;
+}
+.box-1{
+    background-color:grey;
+    color:black;
+    border-bottom-width: 10px;
+    border-top: 5px white;
+    padding:20px;
+    margin-top: 20px;
+    margin:	100px;
+    word-spacing:0.5em;
+}
+.box-2{
+    background-color:grey;
+    color:black;
+    border-bottom-width: 10px;
+    border-top: 5px white;
+    padding:20px;
+    margin-top: 20px;
+    margin: 50px;
+    word-spacing:0.5em;
+}
+a{
+	text-decoration: none;
+	font: bold;
+}
+p{
+	font-family: monospace;
+	font-size: 20px;
+	color: #7c0200;
+}
+body{
+  background-image: url('https://scontent.fsgn8-1.fna.fbcdn.net/v/t1.15752-9/262572159_2094967910668587_1762843442169553860_n.png?_nc_cat=105&ccb=1-5&_nc_sid=ae9488&_nc_ohc=2glhtx4SpQkAX-sFZnN&_nc_ht=scontent.fsgn8-1.fna&oh=455b85a7c69876734a3f525af586890a&oe=61CADAD6');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100% ;
+  margin-top: 40px;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-position: left;
+}
+.max-width{
+	max-width: 1300px;
+	padding: 0 80px;
+	margin: auto;
+}
+/* navbar styling */
+.navbar{
+	position: fixed;
+	width: 100%;
+	background: crimson;
+	font-family:  'Ubuntu', sans-serif;
+}
+.navbar .sticky{
+		padding: 30px 0;
+		background: crimson;
+}
+.navbar .max-width{
+	display: flex;
+	align-items: center;
+	justify-content: space between;
+}
+.navbar .logo a{
+	color: #fff;
+	font-size: 35px;
+	font-weight: 600;
+}
+.navbar .logo a span{
+	color: crimson;
+	transition: all 0.3s ease;
+}
+.navbar .sticky .logo a span{
+	color: #fff;
+}
+.navbar .menu li{
+	list-style: none;
+	display: inline-block;
+	margin: 20;
+	}
+.navbar .menu li a{
+	color: #fff;
+	font-size: 18px;
+	font-weight: 500;
+	margin-left: 25px;
+}
+.navbar .menu li a:hover{
+	color: black;
+}
+.navbar .sticky .logo a span{
+	color: #fff;
+}
+
+
+
+
+
+

@@ -1,0 +1,83 @@
+h1{
+    color: lightyellow;
+    font-size: 60px;
+}
+p{
+    font: cursive;
+    color: lightgreen;
+}
+
+.box-1{
+    background-color:grey;
+    color:black;
+    border-bottom-width: 10px;
+    border-top: 5px white;
+    padding:20px;
+    margin-top: 20px;
+    margin:	100px;
+    word-spacing:0.5em;
+}
+.max-width{
+    max-width: 1300px;
+    padding: 0 80px;
+    margin: auto;
+}
+/* navbar styling */
+.navbar{
+    position: fixed;
+    width: 100%;
+    background: crimson;
+    font-family:  'Ubuntu', sans-serif;
+}
+.navbar .sticky{
+        padding: 30px 0;
+        background: crimson;
+}
+.navbar .max-width{
+    display: flex;
+    align-items: center;
+    justify-content: space between;
+}
+.navbar .logo a{
+    color: #fff;
+    font-size: 35px;
+    font-weight: 600;
+}
+.navbar .logo a span{
+    color: crimson;
+    transition: all 0.3s ease;
+}
+.navbar .sticky .logo a span{
+    color: #fff;
+}
+.navbar .menu li{
+    list-style: none;
+    display: inline-block;
+    margin: 20;
+    }
+.navbar .menu li a{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+}
+.navbar .menu li a:hover{
+    color: black;
+}
+.navbar .sticky .logo a span{
+    color: #fff;
+}
+a{
+    list-style-type: none;
+}
+body{
+  background-image: url('https://cutewallpaper.org/21/creepy-anime-backgrounds/Dark-Anime-Wallpapers-Wallpapers-Browse.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100% ;
+  margin-top: 40px;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-position: left;
+}

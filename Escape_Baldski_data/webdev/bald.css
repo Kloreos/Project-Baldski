@@ -1,0 +1,130 @@
+h1{
+	background: #03342e;
+	color: #7c0200;
+	font-size: 300%;
+	text-align: center;
+	border-radius: 20px;
+	font: Another Danger -Demo;
+}
+
+a{
+	text-decoration: none;
+}
+p{
+	font-family: cursive;
+	font-size: 20px;
+}
+.box-1{
+    background-color:grey;
+    color:black;
+    border-bottom-width: 10px;
+    border-top: 5px white;
+    padding:20px;
+    margin-top: 20px;
+    margin:20px 0;
+    word-spacing:0.5em;
+}
+img {
+  display: block;
+  margin-left: 30;
+  margin-right: auto;
+  border: 0;
+}
+body{
+  background-image: url('classroom.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100% ;
+  margin-top: 40px;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-position: left;
+}
+.max-width{
+	max-width: 1300px;
+	padding: 0 80px;
+	margin: auto;
+}
+/* navbar styling */
+.navbar{
+	position: fixed;
+	width: 100%;
+	background: crimson;
+	font-family:  'Ubuntu', sans-serif;
+}
+.navbar .sticky{
+		padding: 30px 0;
+		background: crimson;
+}
+.navbar .max-width{
+	display: flex;
+	align-items: center;
+	justify-content: space between;
+}
+.navbar .logo a{
+	color: #fff;
+	font-size: 35px;
+	font-weight: 600;
+}
+.navbar .logo a span{
+	color: crimson;
+	transition: all 0.3s ease;
+}
+.navbar .sticky .logo a span{
+	color: #fff;
+}
+.navbar .menu li{
+	list-style: none;
+	display: inline-block;
+	margin: 20;
+	}
+.navbar .menu li a{
+	color: #fff;
+	font-size: 18px;
+	font-weight: 500;
+	margin-left: 25px;
+}
+.navbar .menu li a:hover{
+	color: black;
+}
+.navbar .sticky .logo a span{
+	color: #fff;
+}
+/* home section styling */
+.home{
+	display: flex;
+	height: 100vh;
+	color: #fff;
+	min-height: 500px;
+	font-family: 'Ubuntu',sans-serif;
+}
+.home .max-width{
+	margin: auto 0 auto 40px;
+}
+.home .home-content .text-1{
+	font-size: 27px;
+}
+.home .home-content .text-2{
+	font-size: 75px;
+	margin-left: 1px;
+	font-weight: 600;
+}
+.home .home-content .text-3{
+	font-size: 40px;
+	margin: 5px 0;
+}
+.home .home-content .text-3 span{
+		color: crimson;
+		font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+
