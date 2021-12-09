@@ -11,11 +11,31 @@ import time
 app = Ursina()
 window.fullscreen = False
 
-#Environment
+#--------------------quick dev
+#music off:
+
 
 #Baldski texture
 BTexture = "Baldski_dlc/Barski_text"
 WallB = "Baldski_dlc/Barski_text"
+
+
+#Load DlC
+DLC_load = True
+def DLC():
+    global BTexture
+    global WallB
+    if DLC_load == True:
+        BTexture = "Dam_dlc/dam1.jpg"
+        WallB = "Dam_dlc/dam2.jpg"
+    else: 
+        global Btexture
+        Btexture ="Baldski_dlc/Barski_text"
+        WallB = "Baldski_dlc/WallTexture.jpg"
+
+#---------Environment------------
+
+
 #Entity
 map = Entity(model = 'maze.blend'
 ,texture = BTexture
@@ -130,7 +150,6 @@ basic_gun = "source/Pistol.fbx"
 baldski_face = "baldski.blend"
 weapon = Entity(parent = camera,model = basic_gun, scale = 0.05
 ,position = Vec3(2,-2,-0.5), rotation = Vec3(2,0,8), texture = "textures/PistolTexture.png")
-
 bang = Audio("bang.mp3",loop = False, autoplay = False )
 
 def action():
@@ -159,45 +178,38 @@ def Settings():
     S3 =Button(text="close setting",text_color=color.white,scale=(.15,.20),origin=(4,-1), on_click = ReturnSettings)
 
 def ReturnSettings():
-    if S1.enable() and S3.enable() or setting_img.enable():
-        player.enable()
-        fps.enable()
-        setting_img.disable()
-        S1.disable()
-        S3.disable()
-    
+    player.enable()
+    fps.enable()
+    setting_img.disable()
+    S1.disable()
+    S3.disable()
 
 def click_settings():
     if held_keys["escape"]:
         Settings()
+        time.sleep(0.3)
 
 
 #Weapon animations
 
-#Load DlC
-DLC_load = True
-def DLC():
-    global BTexture
-    global WallB
-    if DLC_load == True:
-        BTexture = "Dam_dlc/dam1.jpg"
-        WallB = "Dam_dlc/dam2.jpg"
-    else: 
-        global Btexture
-        Btexture ="Baldski_dlc/Barski_text"
-        WallB = "Baldski_dlc/WallTexture.jpg"
+
+
 #Environment
 sky = Sky(texture = BTexture)
 #Fix player
 # start_menu()
-def update(): #upate function
+def update(): #update function
     # print(player.position)
     # if player.y < -1: 
     #     player.position = Vec3(0,3,0)
-    click_settings()
 
+    #-----load functions-----
+    click_settings()
     quest()
     DLC()
+
+    #main update
+
     if held_keys["2"]:
         weapon.model = baldski_face
         weapon.texture = BTexture
@@ -206,7 +218,9 @@ def update(): #upate function
         weapon.scale = 0.25
         amogus_audio.play()
 
+
     elif held_keys["1"]:
+        fps.enable()
         weapon.model = basic_gun
         weapon.texture = "textures/PistolTexture.png"
         weapon.position = Vec3(-0.5,-2,-1)
@@ -214,6 +228,7 @@ def update(): #upate function
         weapon.scale = 0.05
 
     elif held_keys["q"]:
+        fps.enable()
         weapon.model = basic_gun
         weapon.texture = "textures/PistolTexture.png"
         weapon.position = Vec3(-0.5,-2,-1)
@@ -221,6 +236,7 @@ def update(): #upate function
         weapon.scale =  0.05
 
     elif held_keys["e"]:
+        fps.enable()
         weapon.model = basic_gun
         weapon.texture = "textures/PistolTexture.png"
         weapon.position =Vec3(2,-2,-0.5)
