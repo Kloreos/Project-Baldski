@@ -83,7 +83,16 @@ player.jump_height = 6
 player.gravity = 1
 player.position = Vec3(2.24184, 0, 15.8104)
 
+#Add levels
+level1 = ["map/amogus.blend","map/obstacle.blend""map/amogus.blend"]
+
+
 #GUI    
+def gameplayGui(): 
+    start_button = Button(text="Start",text_color= color.white,scale=(.80,.20), origin=(0,1))
+    start_button.disable()
+
+gameplayGui()
 
 show_text = True
 text1 = ""
@@ -100,7 +109,7 @@ def quest():
 
 #Start Menu
 b1 = "Sounds/start_menu.mp3"
-menu_image = "Game_menu.png"
+menu_image = "images/temp_menu.jpg"
 baldski_audio = Audio(b1, autoplay=False,loop=True)
 def play_bald():
     baldski_audio.play()
@@ -152,13 +161,29 @@ weapon = Entity(parent = camera,model = basic_gun, scale = 0.05
 ,position = Vec3(2,-2,-0.5), rotation = Vec3(2,0,8), texture = "textures/PistolTexture.png")
 bang = Audio("bang.mp3",loop = False, autoplay = False )
 
+Weapon_list = ["pistol_l","pistol_r","Baldski","knives"]
+current_weapon = ""
+
+def check_weapon():
+    pass
+
 def action():
     bang.play()
 fps = Entity(model='square', parent=camera.ui, scale=.1, collider='box', on_click=action)
-
+#left side
+position_l = (Vec3(-0.5,-2,-1))
+rotation_l = (Vec3(0,0,0))
+scale_l = 0.05
+listl = [position_l, rotation_l, scale_l]
+#right side
+position_r = Vec3(2,-2,-0.5)
+rotation_r = Vec3(2,0,8)
+scale_r = 0.05
+listr = [position_r,rotation_r,scale_r]
 #Settings
 window.fullscreen = True
-window.vsync = False
+# window.vsync = False
+
 def fc():
     if window.fullscreen == True:
         window.fullscreen = False
@@ -169,7 +194,7 @@ def fc():
 def Settings():
     player.disable()
     fps.disable()
-    global S1,S2,S3,setting_img
+    global S1,S2,S3,setting_img, settingClicked
     setting_img = Entity(model = "quad",
      texture = "Settings",
      position = Vec2(.3,-.1),parent=camera.ui,
@@ -178,18 +203,26 @@ def Settings():
     S3 =Button(text="close setting",text_color=color.white,scale=(.15,.20),origin=(4,-1), on_click = ReturnSettings)
 
 def ReturnSettings():
-    player.enable()
     fps.enable()
     setting_img.disable()
     S1.disable()
     S3.disable()
+    player.enable()
+
+def fixSettings():
+    if player.enable() and setting_img.enable():
+            fps.enable()
+            setting_img.disable()
+            S1.disable()
+            S3.disable()
+    else:
+        pass
 
 def click_settings():
+    global settingClicked 
     if held_keys["escape"]:
         Settings()
         time.sleep(0.3)
-
-
 #Weapon animations
 
 
@@ -204,50 +237,56 @@ def update(): #update function
     #     player.position = Vec3(0,3,0)
 
     #-----load functions-----
+    # fixSettings()
     click_settings()
     quest()
     DLC()
 
+
     #main update
+    bru = 0
+    if bru == 1:
+        pass
 
-    if held_keys["2"]:
-        weapon.model = baldski_face
+    elif held_keys["3"]:
+        # weapon.model = baldski_face
         weapon.texture = BTexture
-        weapon.position = Vec3(2,-0.25,2.5)
-        weapon.rotation= Vec3(0,90,0)
-        weapon.scale = 0.25
+        # weapon.position = Vec3(2,-0.25,2.5)
+        # weapon.rotation= Vec3(0,90,0)
+        # weapon.scale = 0.25
         amogus_audio.play()
-
 
     elif held_keys["1"]:
         fps.enable()
         weapon.model = basic_gun
         weapon.texture = "textures/PistolTexture.png"
-        weapon.position = Vec3(-0.5,-2,-1)
-        weapon.rotation =Vec3(0,0,0)
-        weapon.scale = 0.05
+        weapon.position = listr[0]
+        weapon.rotation = listr[1]
+        weapon.scale = listr[2]
 
     elif held_keys["q"]:
         fps.enable()
         weapon.model = basic_gun
         weapon.texture = "textures/PistolTexture.png"
-        weapon.position = Vec3(-0.5,-2,-1)
-        weapon.rotation =Vec3(0,0,0)
-        weapon.scale =  0.05
+        weapon.position = listl[0]
+        weapon.rotation = listl[1]
+        weapon.scale =  listl[2]
 
     elif held_keys["e"]:
         fps.enable()
         weapon.model = basic_gun
         weapon.texture = "textures/PistolTexture.png"
-        weapon.position =Vec3(2,-2,-0.5)
-        weapon.rotation =Vec3(2,0,8)
-        weapon.scale =  0.05
+        weapon.position = listr[0]
+        weapon.rotation = listr[1]
+        weapon.scale =  listr[2]
 
     elif held_keys["p"]:
         player.position = player.position + Vec3(0,40,0)
+        print("Player teleported upward")
 
     elif held_keys["o"]:
         player.position = Vec3(0,0,0)
+        print("Player returned ")
 
     
 
