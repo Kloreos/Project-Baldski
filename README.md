@@ -1,6 +1,6 @@
 <body>
     <h1>
-        Baldski_project:
+        Note: Project in development, most of the functions are incomplete!
     </h1>
     <h1>
         installation instructions:
