@@ -25,7 +25,7 @@
                 <li>Start menu sound: go to the "Sounds" folder and add your sound, changes the variable b1 = "your_sound"</li>
                 <li>amogus sound should be done the same</li>
             </ul>
-            <li>If you have any questions, contact me or siverbeast</li>
+            <li>If you have any question, contact me or siverbeast</li>
         </ul>
     </nav>
 </body>
