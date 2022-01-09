@@ -1,6 +1,6 @@
 <body>
     <h1>
-        Baldski_project:
+        Baldski_project
     </h1>
     <h1>
         installation instructions:
