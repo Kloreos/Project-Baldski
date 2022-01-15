@@ -1,0 +1,187 @@
+- The code starts by importing the necessary libraries.
+- The first library is ursina, which contains all of the functions and classes that are needed to make a game with Ursina.
+- Next, it imports collider from ursina.
+- This class will be used for collision detection in this game.
+- It also imports vec3 from ursina and uses it to create vectors (x, y, z) that can be used later on in code as well as camera from ursina prefabs which will be used for rendering graphics into the screen.
+
+- The next line creates a curve object called "curve" using an equation: x^2 + y^2 = 1/2(x-y).
+- This curve object is then assigned to variable "curve".- The code is a code that loads the Ursina library and creates an instance of the app.
+
+- The code then sets up variables for the camera, first person controller, and lit with shadows shader.
+
+- Afterwards, it imports time to be able to use it in the future.- The code starts by declaring the variables that will be used in the program.
+- The first variable is BTexture, which holds a reference to a texture file called "Baldski_dlc/Barski_text".
+- The second variable is WallB, which holds a reference to another texture file called "Dam_dlc/dam2.jpg".
+
+- The next line of code declares DLC() as an empty function and assigns it the value True.
+- This means that when this function is executed, it will load up all of the textures from Baldski's Dlc folder into memory for use in-game.
+- If you wanted to change what textures were loaded instead of using these default ones, you would need to change this line so that it was False or remove it entirely if you didn't want any textures loaded at all.
+
+- Next comes some conditional statements:
+
+- if DLC_load == True: 	global BTexture 	global WallB 	else: 	global Btexture 	Btexture ="Baldski_dlc/WallTexture.jpg"- The code is for the case where DLC_load == True.
+
+- BTexture = "Dam_dlc/dam1.jpg"
+
+- WallB = "Dam_dlc/dam2.jpg"- The code starts by creating a map entity.
+- The model is set to maze.blend, the texture is set to BTexture, and the scale is set to 2.
+- A collider of mesh was also created for this entity so that it can collide with other entities in the game world.
+
+- Next, two walls are created: wall and wall2.
+- Wall has a position of Vec3(1.39086, 0.752942, 23.2763) while wall2 has a position of Vec3(-0.836897,-0.966893,-24).
+- Wall's scale is (80,70,1), which means its width will be 80 units wide at its base and 70 units high at its top point; meanwhile wall2's scale is (-80,-70,-1), meaning that it will have an 80 unit wide base but only 70 units tall at its top point- The code attempts to create a map with walls that are cubes.
+
+- The code attempts to create a map with walls that are cubes.- The code creates a cube entity with the following properties:
+
+- model = "cube"
+
+- position = Vec3(22.7444, 0.752942, 3.30865)
+
+- scale = (80,70,1)
+
+- collider = "mesh"
+
+- texture = WallB- The code creates five entities, each with a different texture and collider.
+
+- The first entity is created with the model "cube" and has a position of Vec3(22.7444, 0.752942, 3.30865).
+- The scale is (80,70,1) and the collider is "mesh".
+- The rotation_y property is set to 90 degrees.
+- The texture property for this entity is WallB.
+
+- The second entity has a position of Vec3(-1.09923, 0, -21.8463), scale (80,70,1), collider "mesh", rotation_y = 90 degrees and texture WallB as well as the third entity which has a- The code starts by creating a new object called "wall" with the following properties:
+
+- position = Vec3(1.38086, 0.752942, 23.2663)
+
+- scale = (80,70,1)
+
+- collider = "mesh"
+
+- texture =WallB)
+
+- The code then creates two more objects called fix1 and fix2 which are duplicates of wall but have different positions and scales respectively.
+- The code then creates three more objects called fix3 and fix4 which are duplicates of wall but have different colliders as well as textures.
+- Finally the code creates a player object that has the following properties: position=Vec3(0,-10,-10), scale= (50,50,1), collider="box", texture="player")- The code creates four walls, two of which are duplicates.
+
+- The first duplicate wall is created with a position of Vec3(1.38086, 0.752942, 23.2663) and a scale of (80,70,1).
+- The second duplicate wall is created with a position of Vec3(22.7399, 0.752942, 3.2999) and a scale of (80,70,1).
+- The third duplicate wall is created with a position of Vec3(-1, 0,-21.79999) and a scale of (-80,-70,-1).
+- The fourth duplicate wall is created with a position of Vec3(-22.89999,-0., 3.29- The code starts with a function called gameplayGui.
+- This is the main GUI for the game.
+- It starts by creating a button that says "Start" and sets its scale to (.80, .20).
+- The origin of this button is set to (0, 1) which means it will be placed at the bottom left corner of the screen.
+
+- Next, we create another function called level1.
+- This creates an array of levels in our game that are stored as strings in Blender's text format: ["map/amogus.blend","map/obstacle.blend""map/amogus.blend"]- The code is meant to create a player with the given properties and then start a game.
+
+- The code creates a button that when clicked will start the game.- The code starts with the line "def start_menu():" which is a function that starts the menu.
+- The next lines are all variables and functions that will be used in this code.
+
+- The first variable, player, is an entity that represents the player's character.
+- It has two properties: position and parent.
+- Position is set to Vec2(0,-1) which means it's at the bottom left of the screen.
+- Parent is set to camera because we want our game to run on top of other games like Mario or Sonic so they can see what we're doing as well as interact with us if they choose too (we'll get into more detail about this later).
+
+- Next up, there's a global called menu which stores information about our game such as its name and image file location for when it appears on-screen during gameplay.
+- There are also two global variables called Play_button and start_menu() which represent buttons in our UI that allow players to play or start their own game respectively.
+
+- Finally, there are three functions: play_bald(), start_menu(), and analyze().
+- These three functions control different parts of how our game runs including starting/stopping audio playback from one of our sound effects files, playing a- The code is the beginning of a game menu.
+- The player entity has been disabled, and then the play_bald function is called.
+- This function starts playing the audio in the background, which will be looped until it's stopped by pressing Esc or clicking on another button.
+
+- The next step is to create an Entity object with model "quad" and texture menu_image, which will represent the game menu that was created earlier.
+- The position attribute of this Entity object is set to Vec2(0.3,-0.1), which means that it will start at 0 degrees and move towards -90 degrees from its current position when it's done moving around for whatever reason (if you want to see what these angles are in relation to- The code starts by creating a start menu.
+- The code then creates a sound effect called "baldski_audio" and stops it when the player clicks on the play button.
+
+- The text of the Play button is set to white, with an origin of (0,1) so that it appears in front of everything else on screen.
+- When clicked, this function returnsPlayer() which enables the player character and disables all other objects on screen except for the menu.- The code is meant to create a menu that will be displayed on the screen.
+- The code starts by creating a start variable which will hold the start of the menu.
+- Then, it creates a Sound Effects object and assigns it to the start variable.
+
+- The next line sets up an event listener for when a button is clicked.
+- When this happens, returnPlayer() is called which disables all buttons and stops playing audio.- The code starts by creating a new entity called amogus.
+- The code then creates an audio file called "amogus.mp3" and sets it to loop false, autoplay false.
+
+- The next line of code is the function walksound().
+- This function checks if any of the keys on held_keys are pressed (a, d, w or s).
+- If one of these keys is pressed then amogus_audio will play.- The code is a snippet of code that creates an entity called amogus and assigns it the model "amogus.blend".
+
+- The next line in the code above is where we assign our music button to the entity amogus.- The code starts by creating a new entity called amogus.
+- The code then sets the position of amogus to (2,5,0).
+- Next, it adds a script called SmoothFollow(target = player) which will follow the player and change its speed based on how close it is to them.
+
+- Next, there is a base entity that has been created with model "base.blend" and texture "water.png".
+- It also has scale 20 and collider 'mesh'.
+- Lastly, it uses shader lit_with_shadows_shader which makes everything in the scene have shadows cast upon them.- The code will create a water entity with a scale of 20 and collider of mesh.
+- The shader is lit_with_shadows_shader.
+
+- The code above creates an entity called base that has the model "base.blend" and texture "water.png".- The code starts with a variable declaration.
+- The code then creates an Entity called "baldski".
+- This entity is created in the model section of the blend file, and it has a texture called BTexture.
+- It also has scale set to 1, which means that its size will be one unit on all three axes.
+
+- The next line creates another entity called "basic_gun", which is defined as being from the source/Pistol.fbx file.
+
+- The next line sets up two entities: baldski and basic_gun, both of which are parented to camera (the main camera).
+
+- Next comes a position vector for each entity: 2,-2,-0.5 for baldski's position and 2,5,0 for basic_gun's position.
+- These vectors specify where these entities should be placed relative to their parent object (camera) when they're rendered in-game or exported into other formats like .obj or .fbx files- The code will create a pistol entity with the texture of "PistolTexture.png" that is 2 units in length, 2 units in width and 0.5 units in height.
+
+- The position of the entity will be (2, -2,-0.5) which is located at coordinates (2, 5, 0).- The code starts by declaring a variable called "bang" that will be used to play the sound.
+- Next, it creates an Entity object with the model of "square", parent set to camera.ui, scale set to .1, collider set to 'box', and on_click function which is run when this entity is clicked on.
+
+- Next comes a for loop that iterates through all of the weapons in Weapon_list and then sets up an action function which calls bang.play() every time it's run so that you can hear the sound effect playing over and over again as you click on different objects in your game world.
+- The fps object is created next which has no parent or collision box because it doesn't have any physical properties yet but will eventually become part of your game world once you start adding more code later on in this script file.
+- Finally, there are two lines where Entity(model='square',parent=camera) is created with its own unique name (fps) and then added as a child of camera so that they both share one physics engine (collision detection).- The code will create a square entity with the model of "square" and parent set to camera.ui, scale set to .1, collider set to box, and on_click function called action.
+
+- The code will play the sound file bang.mp3 when you click on it with your mouse.- The code starts by declaring a function called fc().
+- This function is used to toggle fullscreen mode.
+- If the window is already in fullscreen mode, it will return false and if not, it will set the window into fullscreen mode.
+
+- Next, we have Settings(), which sets up some variables for our game.
+- We disable player movement and FPS so that they don't interfere with our code while we're working on setting up the scene.
+- Then we create an empty list called listl of three values: position_l, rotation_l, scale_l.
+- These are all 3D vectors representing points in space (position), rotations around those points (rotation), and how much to scale them (scale).
+
+- The next line creates a new variable called right side which has three values as well: position_r, rotation_r, scale_r.
+- The only difference between these two lists is that this one has its values reversed from left side's values because they represent what would be on the right side of our character when he's standing upright facing forward with his arms at his sides like he does in most games.- The code will create a new window, set it to fullscreen and disable the FPS.
+
+- The Settings() function will disable the player object and disable the FPS.- The code starts by creating a new entity called setting_img.
+- This is the image that will be displayed in the settings window.
+- It has a position of Vec2(0,1) and scale=(2.4,1).
+- The texture attribute is set to "Settings".
+
+- Next, two buttons are created: S1 and S3.
+- These buttons have text attributes of "Fullscreen" and "close setting", respectively.
+- They also have scales of (.80,.20), origin at (0, 1), on_click=fc for Fullscreen button and ReturnSettings for close setting button.
+
+- The function fc() sets up the full screen button so that when it's clicked it switches to full screen mode with no borders or anything else obstructing your view of what you're playing as well as disabling any other buttons from being clicked while in this mode until you click back into windowed mode again using another function like fps().- The code is an example of a function that will be called when the button on the screen is clicked.
+
+- The code first disables all buttons on the screen and then enables them again after it has finished running.- The code starts by creating a variable called fps.
+- This is used to control the frame rate of the game.
+- The next line creates an image that will be displayed on screen when settings are enabled and disabled.
+
+- The code then goes into a function called fixSettings().
+- This function checks if player.enable() and setting_img.enable(), which means that settings should be enabled or not, respectively, before it does anything else with them.
+- If they are both true, then fps is set to enable so that the game can run at its intended speed; otherwise, nothing happens because there's no need for this functionality in this particular program (the program doesn't even have any settings).
+- After enabling FPS, setting_img is disabled because we don't want it to interfere with our gameplay experience while playing the game!
+
+- Next comes another function called click_settings().
+- It starts by making sure held_keys["escape"] isn't true before continuing on with what it needs to do: call Settings() and sleep for 0.3 seconds (which allows time for players who might accidentally press escape during gameplay) before disabling all weapons except one: S1 (the pistol).- The code is the code that will be executed when the player clicks on the settings button.
+
+- The first thing to note is that if the player has enabled and setting_img has been enabled, then fps.enable() will be called, which enables FPS.
+
+- Next, setting_img.disable() will disable Setting Image because it was already disabled before by holding down escape key.
+
+- Lastly, S1 and S3 are disabled because they were already disabled before by holding down escape key.- The code starts by loading the functions.
+- The fixSettings() function is used to reset all of the settings in game, including player health and ammo.
+- The click_settings() function is used to load up a new level with different settings for the player.
+- The quest() function starts a new mission that will be played through until it's completed or failed.
+
+- The main update loop checks if bru == 1 which means that there are enemies present on screen.
+- If so, then pass is called which ends the program and returns back to DOS prompt without continuing any further actions in-game (i.e., without playing any sounds).
+- Otherwise, held keys["3"] calls weapon model change from baldski face to basic gun texture and position changes from 2,-0.25,2.5) Vec3(2,-0 	 0) Vec3(-0 	 0), respectively; weapon rotation changes from 0 	 90 degrees; scale changes from .25; amogus audio plays when "1" key is pressed while fps enables when "q" key is pressed and stops when "e" key is pressed before returning back to DOS prompt after completing its tasks as well (i.e., without playing any sounds).
+
+- If- The code is used to load the functions and variables that are needed for the game.
+
+- The main update function, which is called by the run() function, will be updated in real-time with all of the necessary code snippets.
