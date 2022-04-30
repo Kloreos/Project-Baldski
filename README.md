@@ -13,7 +13,7 @@
             <li>3.Run the baldski file (Note that there's a few missing textures)</li>
         </ul>
     </nav>
-    <h3>credits: PeterBenj2000 (scripter), Siverbeast2003(scripter), KeitLam(Web developer)</h3>
+    <h3>credits: Kloreos (scripter), Siverbeast2003(scripter), KeitLam(Web developer)</h3>
     <h3>Projects textures can be replaced however you want</h3>
     <nav>
         <ul>
